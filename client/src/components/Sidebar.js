@@ -13,7 +13,7 @@ return (
     <>
     <header className="header">
         <button className="header__button" id="btnNav" type="button">
-        <div class="container" onClick={handleBar}>
+        <div className="container" onClick={handleBar}>
             <div class="bar1"></div>
             <div class="bar2"></div>
             <div class="bar3"></div>
