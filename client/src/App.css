@@ -106,6 +106,7 @@ body {
 .nav__link:hover {
   background: #eeeeee;
   color: #47079b;
+  background: transform 0.3s;
 }
 
 .nav__overlay {
@@ -130,6 +131,12 @@ body {
   margin-right: 10px;
 }
 
+.x-button:hover {
+  color: #47079b;
+  background-color: #eeeeee;
+  background: transform 0.3s;
+}
+
 .form-inputs{
   display: inline-grid;
   width: 200px;
@@ -151,4 +158,9 @@ body {
 
 h3 {
   margin: 0;
+}
+
+
+.calendar {
+  text-align: center;
 }

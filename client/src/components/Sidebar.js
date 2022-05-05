@@ -27,6 +27,7 @@ return (
                 <a href="/home" className="nav__link"><i>🏠</i> Home</a>
                 <a href="/grades" className="nav__link"><i>✏️</i> Grades</a>
                 <a href="/profile" className="nav__link"><i>👤</i> Profile</a>
+                <a href="/calendar" className="nav__link"><i>📅</i> Calendar</a>
             </div>
             <div className="nav__overlay"></div>
         </nav>
