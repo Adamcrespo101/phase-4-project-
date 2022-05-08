@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import { useState, useEffect } from 'react';
 import StudentGradesContainer from './StudentGradesContainer';
 
-function GradeFilter({studentsArr, StyledTableCell, StyledTableRow}){
+function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCourses}){
     
     const [grades, setGrades]= useState([])
 
@@ -25,6 +25,16 @@ function GradeFilter({studentsArr, StyledTableCell, StyledTableRow}){
     })
 
     return(
+      <>
+      <label for="sort-by-course" id="cat-label">
+      Sort student roster by course:
+            <select className='cat-select' name="sort-by-course">
+                    <option>All</option>
+                {filteredCourses?.map((course) => (
+                    <option key={course}>{course}</option>
+                    ))}
+            </select>
+            </label>
         <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
@@ -32,13 +42,13 @@ function GradeFilter({studentsArr, StyledTableCell, StyledTableRow}){
             <StyledTableCell>Student Name</StyledTableCell>
             <StyledTableCell align="right">Course</StyledTableCell>
             <StyledTableCell align="right">Grade</StyledTableCell>
-            <StyledTableCell align="right">Feedback</StyledTableCell>
             <StyledTableCell align="right">Edit</StyledTableCell>
             <StyledTableCell align="right">Delete</StyledTableCell>
+            <StyledTableCell align="center">Feedback</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-            
+       
            
        {grades?.map((grade) => (
            <>
@@ -46,15 +56,16 @@ function GradeFilter({studentsArr, StyledTableCell, StyledTableRow}){
             <StyledTableCell component="th" scope="row">{grade.student.name}</StyledTableCell>
               <StyledTableCell align="right">{grade.course_name}</StyledTableCell>
               <StyledTableCell align="right">{grade.result}</StyledTableCell>
-              <StyledTableCell align="right">{grade.feedback}</StyledTableCell> 
               <StyledTableCell align="right" className='table-btn'>✏️</StyledTableCell>
               <StyledTableCell align="right" className='table-btn'>❌</StyledTableCell>
+              <StyledTableCell align="right">{grade.feedback}</StyledTableCell> 
               </StyledTableRow>
             </>
               ))}
         </TableBody>
       </Table>
-    </TableContainer> 
+    </TableContainer>
+    </> 
     )
 }
 

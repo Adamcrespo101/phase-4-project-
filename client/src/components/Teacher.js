@@ -15,6 +15,10 @@ function Teacher({teachers}){
 
     const [displayState, setDisplayState]= useState(true)
 
+    const [studentDisplay, setStudentDisplay] = useState(null)
+
+    const [showForm, setShowForm]= useState(false)
+
     const studentsArr = teachers.students 
 
     const gradesArr = teachers.grades
@@ -25,7 +29,7 @@ function Teacher({teachers}){
 
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.head}`]: {
-          backgroundColor: theme.palette.common.black,
+          backgroundColor: theme.palette.success.dark,
           color: theme.palette.common.white,
         },
         [`&.${tableCellClasses.body}`]: {
@@ -55,9 +59,17 @@ function Teacher({teachers}){
         setDisplayState(prev => !prev)
     }
    
+    function handleShow(){
+      setShowForm(prev => !prev)
+    }
     
-      
+    const selectedStudent = studentsArr.find((student) => student.id === studentDisplay)
 
+      function handleClick(){
+        setStudentDisplay(selectedStudent)
+      }
+
+      console.log(selectedStudent)
     return(
         <div className="teacher_profile">
             <h1>My Teacher Profile:</h1>
@@ -68,17 +80,39 @@ function Teacher({teachers}){
             <br></br>
             <h3>Professor of: {teachers.subject}</h3>
             <br></br>
-            <h2>{displayState ? "Students" : "Grades:"}</h2>
-            <label for="sort-by-course">
-            Sort student roster by course:
-            <select className='cat-select' name="sort-by-course">
+            <div className={showForm ? 'info-container' : 'hidden'}>
+              <h2>Add new student to your roster:</h2>
+              <form>
+                  <div className='new-student'>
+                    <label for="name"> Name:
+                      <input type="text" name="name" placeholder='Student name...'/>
+                    </label>
+                    <br></br>
+                    <label for="name"> Student ID:
+                      <input type="text" name="name" placeholder='Username or ID #...'/>
+                    </label>
+                    <br></br>
+                    <label for="name"> DOB:
+                      <input type="text" name="name" placeholder='Date of birth...'/>
+                    </label>
+                    <br></br>
+                    <label for="name"> Expected graduation:
+                      <input type="text" name="name" placeholder='expected graduation...'/>
+                    </label>
+                    <br></br>
+                    <select className='cat-select' name="course_name" id="new-select">
                     <option>All</option>
                 {filteredCourses?.map((course) => (
-                    <option key={course}>{course}</option>
-                    ))}
+                  <option key={course}>{course}</option>
+                  ))}
             </select>
-            <button onClick={changeDisplay}>{displayState? "Show Grades and Assignments" : "Return"}</button>
-            </label>
+                  <h3 className="x-button"> Add Student [+]</h3>
+                  </div>
+              </form>
+            </div>
+            <h2>{displayState ? "Students:" : "Grades:"}</h2> 
+            <p className="show-button" onClick={changeDisplay}>{displayState? "Show Grades and Assignments" : "Return"}</p>
+            <p className='show-button' onClick={handleShow}>{!showForm ? "Add Students to the roster" : "Close form"}</p>
             {displayState ? <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
@@ -88,8 +122,6 @@ function Teacher({teachers}){
             <StyledTableCell align="right">Student ID</StyledTableCell>
             <StyledTableCell align="right">Date of Birth</StyledTableCell>
             <StyledTableCell align="right">Expected Graduation</StyledTableCell>
-            <StyledTableCell align="right" >Edit</StyledTableCell>
-            <StyledTableCell align="right" >Delete</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -97,15 +129,13 @@ function Teacher({teachers}){
        {studentsArr?.map((student) => (
            
             <StyledTableRow>
-              <StyledTableCell component="th" scope="row">
+              <StyledTableCell component="th" scope="row" onClick={(() => setStudentDisplay(student.id))}>
                 {student.name}
               </StyledTableCell>
               <StyledTableCell align="right">{student.degree_type}</StyledTableCell>
               <StyledTableCell align="right">{student.username}</StyledTableCell>
               <StyledTableCell align="right">{student.date_of_birth}</StyledTableCell>
               <StyledTableCell align="right">{student.expected_graduation}</StyledTableCell>
-              <StyledTableCell align="right" className='table-btn'>✏️</StyledTableCell>
-              <StyledTableCell align="right" className='table-btn'>❌</StyledTableCell>
             </StyledTableRow>
               
             ))}
@@ -115,7 +145,7 @@ function Teacher({teachers}){
     
     : 
     
-    <GradeFilter studentsArr={studentsArr} StyledTableCell={StyledTableCell} StyledTableRow={StyledTableRow}/>
+    <GradeFilter studentsArr={studentsArr} StyledTableCell={StyledTableCell} StyledTableRow={StyledTableRow} filteredCourses={filteredCourses}/>
     
     }
       

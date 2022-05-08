@@ -15,8 +15,9 @@ h1 {
   left: 0;
   width: 100%;
   height: var(--header-height);
-  background: #47079b;
+  background: #1b5e20;
   display: flex;
+  z-index: 2;
 }
 
 body {
@@ -75,38 +76,43 @@ body {
   width: 250px;
   background: white;
   transform: translateX(-250px);
+  background-color: #1b5e20;
   transition: transform 0.3s;
+  
 }
 
 .nav--open .nav__links {
   transform: translateX(0);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  
 }
 
 .nav__link {
   display: flex; 
   align-items: center;
-  color: #666666;
+  background-color: #1b5e20;
+  color: white;
   font-weight: bold;
   font-size: 14px;
   text-decoration: none;
   padding: 12px 15px;
-  background: transform 0.3s;
+  -webkit-transition: color 1s;
+  -moz-transition:    color 1s;
+  -ms-transition:     color 1s;
+  -o-transition:      color 1s;
+  background: transform 0.2s;
 }
 
 .nav__link > i {
   margin-right: 15px;
 }
 
-.nav__link--active {
-  color: #009578;
-  background: #eeeeee;
-}
+
 
 .nav__link:hover {
   background: #eeeeee;
-  color: #47079b;
-  background: transform 0.3s;
+  color: #1b5e20;
+  
 }
 
 .nav__overlay {
@@ -129,19 +135,28 @@ body {
   cursor: pointer;
   float: right;
   margin-right: 10px;
+  background-color: #1b5e20;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  -webkit-transition: color 1s;
+  -moz-transition:    color 1s;
+  -ms-transition:     color 1s;
+  -o-transition:      color 1s;
+  transition:         color 1s;
 }
 
-.x-button:hover {
-  color: #47079b;
+.x-button:hover, .show-button:hover {
+  color: #1b5e20;
   background-color: #eeeeee;
-  background: transform 0.3s;
+  
 }
 
 .form-inputs{
   display: inline-grid;
   width: 200px;
   padding: 100px 100px;
-  border: solid 2px #47079b;
+  border: solid 2px #1b5e20;
   border-radius: 50px;
   box-shadow: 10px 5px 15px black;
   height: 220px;
@@ -199,7 +214,7 @@ h3 {
 
 .close:hover,
 .close:focus {
-  color: #47079b;
+  color: #1b5e20;
   text-decoration: none;
   cursor: pointer;
 }
@@ -214,4 +229,70 @@ h3 {
 
 .table-btn {
   cursor: pointer;
+}
+
+.info-container {
+  float: right;
+  height: 300px;
+  width: 500px;
+  position: absolute;
+  right: 400px;
+  top: 160px;
+  border: solid 2px #1b5e20;
+  padding: 10px;
+  border-radius: 50px;
+}
+
+.new-student {
+  display: table-caption;
+}
+
+#new-select {
+  float: right;
+  position: absolute;
+  right: 30px;
+  top: 94px;
+}
+
+#cat-label {
+  margin-left: 100px;
+  
+}
+
+
+
+.show-button{
+  cursor: pointer;
+  float: left;
+  margin-right: 10px;
+  background-color: #1b5e20;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  -webkit-transition: color 1s;
+  -moz-transition:    color 1s;
+  -ms-transition:     color 1s;
+  -o-transition:      color 1s;
+  transition:         color 1s;
+}
+
+.hidden { 
+  display: none;
+  transition: transform 0.3s;
+  background: transform 0.2s;
+}
+
+.css-15001un-MuiTableCell-root.MuiTableCell-body{
+  -webkit-transition: color 1s;
+  -moz-transition:    color 1s;
+  -ms-transition:     color 1s;
+  -o-transition:      color 1s;
+  transition:         color 1s;
+}
+
+.css-15001un-MuiTableCell-root.MuiTableCell-body:hover {
+  background-color: #1b5e20;
+  text-decoration: none;
+  cursor: pointer;
+  color:white
 }

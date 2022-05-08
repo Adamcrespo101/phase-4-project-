@@ -25,7 +25,7 @@ return (
                 <p onClick={handleBar} className="x-button">[x]</p>
                 <a href="/login" className="nav__link">Login/Signup</a>
                 <a href="/" className="nav__link"><i>🏠</i> Home</a>
-                <a href="/grades" className="nav__link"><i>✏️</i> Grades</a>
+                
                 <a href="/profile" className="nav__link"><i>👤</i> Profile</a>
                 <a href="/calendar" className="nav__link"><i>📅</i> Calendar</a>
             </div>
