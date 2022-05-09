@@ -23,10 +23,6 @@ function Teacher({teachers}){
 
     const gradesArr = teachers.grades
 
-    console.log(gradesArr)
-
-    
-
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.head}`]: {
           backgroundColor: theme.palette.success.dark,
@@ -55,6 +51,7 @@ function Teacher({teachers}){
 
       const filteredCourses = courseNames?.filter(onlyUniqueCourses)
 
+        //displayState and setDisplayState change the table from students bio to course final grades
       function changeDisplay(){
         setDisplayState(prev => !prev)
     }
@@ -63,7 +60,7 @@ function Teacher({teachers}){
       setShowForm(prev => !prev)
     }
     
-    const selectedStudent = studentsArr.find((student) => student.id === studentDisplay)
+    const selectedStudent = studentsArr?.find((student) => student.id === studentDisplay)
 
       function handleClick(){
         setStudentDisplay(selectedStudent)
@@ -109,6 +106,11 @@ function Teacher({teachers}){
                   <h3 className="x-button"> Add Student [+]</h3>
                   </div>
               </form>
+            </div>
+            <div className='modal'>
+              <div className='modal-content'>
+                  <p>Name: {selectedStudent.name}</p>
+              </div>
             </div>
             <h2>{displayState ? "Students:" : "Grades:"}</h2> 
             <p className="show-button" onClick={changeDisplay}>{displayState? "Show Grades and Assignments" : "Return"}</p>

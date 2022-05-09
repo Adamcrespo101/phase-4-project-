@@ -13,6 +13,7 @@ import StudentGradesContainer from './StudentGradesContainer';
 function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCourses}){
     
     const [grades, setGrades]= useState([])
+    const [courseName, setCourseName]= useState("All")
 
     useEffect(() => {
         fetch('/grades/1')
@@ -24,11 +25,15 @@ function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCour
         return <StyledTableCell component="th" scope="row">{student.name}</StyledTableCell>
     })
 
+    
+     let courseFilter = grades?.filter((grade) => grade.course_name.includes(courseName))
+    console.log(courseFilter)
+    console.log(courseName)
     return(
       <>
       <label for="sort-by-course" id="cat-label">
       Sort student roster by course:
-            <select className='cat-select' name="sort-by-course">
+            <select className='cat-select' name="sort-by-course"  onChange={(e) => setCourseName(e.target.value)}>
                     <option>All</option>
                 {filteredCourses?.map((course) => (
                     <option key={course}>{course}</option>
@@ -50,7 +55,9 @@ function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCour
         <TableBody>
        
            
-       {grades?.map((grade) => (
+             {courseName === "All" ? 
+             
+                  grades?.map((grade) => (
            <>
             <StyledTableRow>
             <StyledTableCell component="th" scope="row">{grade.student.name}</StyledTableCell>
@@ -60,7 +67,19 @@ function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCour
               <StyledTableCell align="right" className='table-btn'>❌</StyledTableCell>
               <StyledTableCell align="right">{grade.feedback}</StyledTableCell> 
               </StyledTableRow>
-            </>
+            </> ))        
+            :
+              courseFilter?.map((grade) => (
+          <>
+            <StyledTableRow>
+            <StyledTableCell component="th" scope="row">{grade.student.name}</StyledTableCell>
+              <StyledTableCell align="right">{grade.course_name}</StyledTableCell>
+              <StyledTableCell align="right">{grade.result}</StyledTableCell>
+              <StyledTableCell align="right" className='table-btn'>✏️</StyledTableCell>
+              <StyledTableCell align="right" className='table-btn'>❌</StyledTableCell>
+              <StyledTableCell align="right">{grade.feedback}</StyledTableCell> 
+            </StyledTableRow>
+        </>
               ))}
         </TableBody>
       </Table>
