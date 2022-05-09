@@ -13,17 +13,17 @@ import { useState } from 'react';
 
 function Teacher({teachers}){
 
-    const [displayState, setDisplayState]= useState(true)
+    const [displayState, setDisplayState]= useState(true) //displayState is state to toggle showing students or final grades for their courses
 
-    const [studentDisplay, setStudentDisplay] = useState(null)
+    const [studentDisplay, setStudentDisplay] = useState(null) //studentDisplay is to grab the student object thats clicked on
 
-    const [showForm, setShowForm]= useState(false)
+    const [showForm, setShowForm]= useState(false) //show/hide new student form
 
-    const studentsArr = teachers.students 
+    const studentsArr = teachers.students //students for the logged in teacher
 
-    const gradesArr = teachers.grades
+    const gradesArr = teachers.grades //final grades for the logged in teachers students 
 
-    const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    const StyledTableCell = styled(TableCell)(({ theme }) => ({ //MUI styling for the students info table
         [`&.${tableCellClasses.head}`]: {
           backgroundColor: theme.palette.success.dark,
           color: theme.palette.common.white,
@@ -42,7 +42,7 @@ function Teacher({teachers}){
           border: 0,
         },
       }));
-      
+      //onlyUniqueCourses returns one of each course that the teacher has
       function onlyUniqueCourses(value, index, self){
         return self.indexOf(value) === index;
       } 
@@ -56,11 +56,11 @@ function Teacher({teachers}){
         setDisplayState(prev => !prev)
     }
    
-    function handleShow(){
+    function handleShow(){ //show/hide new student form
       setShowForm(prev => !prev)
     }
     
-    const selectedStudent = studentsArr?.find((student) => student.id === studentDisplay)
+    const selectedStudent = studentsArr?.find((student) => student.id === studentDisplay) //filters the students from the one thats clicked on
 
       function handleClick(){
         setStudentDisplay(selectedStudent)

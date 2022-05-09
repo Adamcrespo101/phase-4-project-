@@ -22,11 +22,11 @@ function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCour
     },[])
 
     const names = studentsArr?.map((student) => {
-        return <StyledTableCell component="th" scope="row">{student.name}</StyledTableCell>
-    })
+        return <StyledTableCell component="th" scope="row">{student.name}</StyledTableCell> //maps the students names
+    })                                                                                      //dont think im even using it
 
     
-     let courseFilter = grades?.filter((grade) => grade.course_name.includes(courseName))
+     let courseFilter = grades?.filter((grade) => grade.course_name.includes(courseName)) //filters based on the selected course 
     console.log(courseFilter)
     console.log(courseName)
     return(
