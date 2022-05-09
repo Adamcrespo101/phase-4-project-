@@ -1,13 +1,23 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom'
 
-function Sidebar() {
-
+function Sidebar({setCurrentUser, currentUser}) {
+    
     const [open, setOpen] = useState(true)
-
+    const navigate = useNavigate()
     function handleBar () {
         setOpen(prev => !prev)
     }
 
+    const handleLogout = () => {
+        fetch('/logout', {method: "DELETE"})
+        .then(res => {
+              if (res.ok) {
+                  navigate('/login')
+                }
+                setCurrentUser(null)
+            })
+      }
 
 return (
     <>
@@ -19,6 +29,7 @@ return (
             <div class="bar3"></div>
         </div>
         </button>
+        <button className={currentUser === null ? "logout-btn x-button logged_out" : "logout-btn x-button"} onClick={handleLogout}>Log Out</button>
         </header>
         <nav className={open ? "nav" : "nav nav--open"}>
             <div className="nav__links">

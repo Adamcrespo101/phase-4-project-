@@ -39,9 +39,9 @@ function Teacher({currentUser}){
 
     const handleClose = () => setOpen(false);
 
-    const studentsArr = currentUser.students //students for the logged in teacher
+    const studentsArr = currentUser?.students //students for the logged in teacher
 
-    const gradesArr = currentUser.grades //final grades for the logged in teachers students 
+    const gradesArr = currentUser?.grades //final grades for the logged in teachers students 
 
     const StyledTableCell = styled(TableCell)(({ theme }) => ({ //MUI styling for the students info table
         [`&.${tableCellClasses.head}`]: {
@@ -105,18 +105,16 @@ function Teacher({currentUser}){
         setStudentDisplay(selectedStudent)
       }
 
-      console.log(selectedStudent)
-      console.log(students)
-    
+     
     return(
         <div className="teacher_profile">
             <h1>My Teacher Profile:</h1>
-            <img src={currentUser.thumbnail} alt="teacher-img" style={{height: "300px", width: "400px", borderRadius: "50px"}}/>
-            <h2>Professor {currentUser.name}</h2>
+            <img src={currentUser?.thumbnail} alt="teacher-img" style={{height: "300px", width: "400px", borderRadius: "50px"}}/>
+            <h2>Professor {currentUser?.name}</h2>
             <br></br>
-            <h3>University: {currentUser.school}</h3>
+            <h3>University: {currentUser?.school}</h3>
             <br></br>
-            <h3>Professor of: {currentUser.subject}</h3>
+            <h3>Professor of: {currentUser?.subject}</h3>
             <br></br>
             <div className={showForm ? 'info-container' : 'hidden'}>
               <h2>Add new student to your roster:</h2>

@@ -15,36 +15,33 @@ import { Navigate } from 'react-router-dom'
 
 function App() {
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  
   const [radioChange, setRadioChange]= useState('')
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const [teachers, setTeachers]= useState({})
-  let params = useParams()
+  
   
 
     useEffect(() => {
-    fetch(`/me`)
+    fetch('/me')
     .then((res) => {
       if (res.ok) {
         res.json()
         .then((user) => {
-          setCurrentUser(user);
           setIsAuthenticated(true);
+          setCurrentUser(user);
           
         });
       }
     });
   }, []);
 
-  if (!isAuthenticated) {
-    return <div></div>;
-  }
+ 
 
 
   console.log(currentUser)
   console.log(isAuthenticated)
+  console.log(radioChange)
   // useEffect(() => {
   //   fetch('/teachers/1')
   //   .then(res => res.json())
@@ -61,10 +58,10 @@ console.log(isAuthenticated)
 
   return (
     <div className="App">
-      <Sidebar />
       <BrowserRouter>
+      <Sidebar isAuthenticated={isAuthenticated} setCurrentUser={setCurrentUser} currentUser={currentUser}/>
       <Routes>
-        <Route path="/login" element={<Login setCurrentUser={setCurrentUser} handleRadio={handleRadio} username={username} setUsername={setUsername} setPassword={setPassword} password={password} radioChange={radioChange} setRadioChange={radioChange} isAuthenticated={isAuthenticated}/>}></Route>
+        <Route path="/login" element={<Login setCurrentUser={setCurrentUser} handleRadio={handleRadio} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/>}></Route>
         <Route path="/" element={<Home />}></Route>
         <Route path="/signup" element={<SignUp radioChange={radioChange} setRadioChange={setRadioChange}/>}></Route>
         <Route path="/calendar" element={<Calendar />}></Route>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Navigate } from 'react-router-dom'
 
-function Login ({handleRadio, setCurrentUser, isAuthenticated}) {
+function Login ({handleRadio, setCurrentUser, isAuthenticated, setIsAuthenticated}) {
 
 
     const navigate = useNavigate()
@@ -34,6 +34,7 @@ function Login ({handleRadio, setCurrentUser, isAuthenticated}) {
       };
       const handleSubmit = (event) => {
         event.preventDefault();
+        console.log('hello')
         fetch("/login", {
           method: "POST",
           headers: {
@@ -44,6 +45,8 @@ function Login ({handleRadio, setCurrentUser, isAuthenticated}) {
           if (res.ok) {
             res.json().then((user) => {
               setCurrentUser(user);
+              setIsAuthenticated(true)
+              navigate('/')
             });
           } else {
             res.json().then((errors) => {
@@ -53,11 +56,7 @@ function Login ({handleRadio, setCurrentUser, isAuthenticated}) {
         });
       };
     
-      function navigateHome(){
-        if (isAuthenticated){
-          return  <Navigate to="/profile" replace={true}/>
-        }
-      }
+     
 
 
     return(
@@ -82,7 +81,7 @@ function Login ({handleRadio, setCurrentUser, isAuthenticated}) {
                         <label for="Teacher">Teacher</label>
                     </div>
                 </fieldset>
-                <button type="submit" onClick={() => navigate('/profile')}>Submit</button>
+                <button type="submit">Submit</button>
                 <a href="/signup" id="signup_link" onClick={handleOpen} >Need an Account? Click here to signup.</a>
                 <div id="myModal" class="modal" style={open ? {display: "block"} : {display: "none"}}>
                 <div class="modal-content">

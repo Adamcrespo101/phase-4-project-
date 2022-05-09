@@ -308,3 +308,12 @@ h3 {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+.logout-btn {
+  position: absolute;
+  right: 0px;
+  top: 10px;
+}
+
+.logged_out{
+  display: none;
+}
