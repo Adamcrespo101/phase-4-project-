@@ -10,7 +10,8 @@ import SignUp from './SignUp';
 import TeacherGradesContainer from './TeacherGradesContainer';
 import StudentGradesContainer from './StudentGradesContainer';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 function App() {
 
@@ -21,13 +22,17 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [teachers, setTeachers]= useState({})
   let params = useParams()
-  useEffect(() => {
-    fetch(`/auth`).then((res) => {
+  
+
+    useEffect(() => {
+    fetch(`/me`)
+    .then((res) => {
       if (res.ok) {
-        res.json().then((user) => {
-          console.log(user)
+        res.json()
+        .then((user) => {
           setCurrentUser(user);
           setIsAuthenticated(true);
+          
         });
       }
     });
@@ -37,6 +42,9 @@ function App() {
     return <div></div>;
   }
 
+
+  console.log(currentUser)
+  console.log(isAuthenticated)
   // useEffect(() => {
   //   fetch('/teachers/1')
   //   .then(res => res.json())
@@ -45,7 +53,7 @@ function App() {
 
 
 
-console.log(teachers)
+console.log(isAuthenticated)
 
   function handleRadio (e){
     setRadioChange(e.target.value)
@@ -56,11 +64,11 @@ console.log(teachers)
       <Sidebar />
       <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login setCurrentUser={setCurrentUser} handleRadio={handleRadio} username={username} setUsername={setUsername} setPassword={setPassword} password={password} radioChange={radioChange} setRadioChange={radioChange}/>}></Route>
+        <Route path="/login" element={<Login setCurrentUser={setCurrentUser} handleRadio={handleRadio} username={username} setUsername={setUsername} setPassword={setPassword} password={password} radioChange={radioChange} setRadioChange={radioChange} isAuthenticated={isAuthenticated}/>}></Route>
         <Route path="/" element={<Home />}></Route>
         <Route path="/signup" element={<SignUp radioChange={radioChange} setRadioChange={setRadioChange}/>}></Route>
         <Route path="/calendar" element={<Calendar />}></Route>
-        {/*<Route path="/profile" element={<Teacher teachers={teachers} />}></Route>*/}
+        <Route path="/profile" element={<Teacher currentUser={currentUser} />}></Route>
         <Route path="/teacher-grades" element={<TeacherGradesContainer/>}></Route>
         <Route path="/student-grades" element={<StudentGradesContainer/>}></Route>
       </Routes>

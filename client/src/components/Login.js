@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { useNavigate, Navigate } from 'react-router-dom'
 
-function Login ({username, setUsername, password, setPassword, radioChange, setRadioChange, handleRadio, setCurrentUser}) {
+function Login ({handleRadio, setCurrentUser, isAuthenticated}) {
 
 
-    
+    const navigate = useNavigate()
     const [toggle, setToggle]= useState(false)
     const [open, setOpen]= useState(false)
-    const [errors, setErrors]= useState([])
+    const [error, setError]= useState([])
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -52,7 +53,13 @@ function Login ({username, setUsername, password, setPassword, radioChange, setR
         });
       };
     
-    console.log(radioChange)
+      function navigateHome(){
+        if (isAuthenticated){
+          return  <Navigate to="/profile" replace={true}/>
+        }
+      }
+
+
     return(
         <div className="contain">
             <div className="login">
@@ -75,7 +82,7 @@ function Login ({username, setUsername, password, setPassword, radioChange, setR
                         <label for="Teacher">Teacher</label>
                     </div>
                 </fieldset>
-                <button type="submit">Submit</button>
+                <button type="submit" onClick={() => navigate('/profile')}>Submit</button>
                 <a href="/signup" id="signup_link" onClick={handleOpen} >Need an Account? Click here to signup.</a>
                 <div id="myModal" class="modal" style={open ? {display: "block"} : {display: "none"}}>
                 <div class="modal-content">
