@@ -47,7 +47,9 @@ function SignUp ({radioChange, setRadioChange}) {
       }
     return(
         <form className="new-user-form">
+          <img id="signup-img" src="https://cdn.firespring.com/images/ee612d58-b43d-4530-93a8-9d4ebbd9a6ba.jpg" alt="college lecture hall" />
             <h3 className="modal-title">Create a new user:</h3>
+            <div className="form-inputs">
                 <p>Email:<input type="text" placeholder="name@example.com..." name="email" onChange={handleSignUp} value={formData.email}/></p>
             <label for="username">Username:       </label>
                 <input type="text" name="username" placeholder="Student ID or Teacher username" onChange={handleSignUp} value={formData.username}/>
@@ -56,6 +58,7 @@ function SignUp ({radioChange, setRadioChange}) {
                     <input type="password" name="password" placeholder="Enter a password" onChange={handleSignUp} value={formData.password}/>
                     <br/>
             <button type="submit" className="new-user-btn">submit</button>
+            </div>
         </form>
     )
 }

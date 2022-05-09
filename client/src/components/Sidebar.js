@@ -23,9 +23,9 @@ return (
         <nav className={open ? "nav" : "nav nav--open"}>
             <div className="nav__links">
                 <p onClick={handleBar} className="x-button">[x]</p>
-                <a href="/login" className="nav__link">Login/Signup</a>
+                <a href="/login" className="nav__link">Login</a>
                 <a href="/" className="nav__link"><i>🏠</i> Home</a>
-                
+                <a href="/signup" className="nav__link"><i>📝</i>Sign Up</a>
                 <a href="/profile" className="nav__link"><i>👤</i> Profile</a>
                 <a href="/calendar" className="nav__link"><i>📅</i> Calendar</a>
             </div>
