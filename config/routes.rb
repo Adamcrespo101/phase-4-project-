@@ -4,14 +4,14 @@ Rails.application.routes.draw do
   resources :teachers, only: [:index, :create, :show, :destroy]
   resources :students, only: [:index, :create, :show, :destroy]
 
+  post '/login', to: "sessions#create"
+  
+  delete '/logout', to: "sessions#destroy"
+  
+  get '/auth', to: "teachers#show"
+  
+  get '/signup', to: "teachers#create"
 
-get '/signup', to: "teachers#create"
-
-get '/me', to: "teachers#show"
-
-delete '/logout', to: "sessions#destroy"
-
-post "/login", to: "sessions#create"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

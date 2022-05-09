@@ -96,6 +96,7 @@ body {
   font-size: 14px;
   text-decoration: none;
   padding: 12px 15px;
+  transition: color 1s;
   -webkit-transition: color 1s;
   -moz-transition:    color 1s;
   -ms-transition:     color 1s;
@@ -295,5 +296,15 @@ h3 {
   text-decoration: none;
   cursor: pointer;
   color:white
+
+}
+
+.css-1wnsr1i {
+  max-height: 600px;
+  overflow: scroll;
+  overflow-x: hidden;
+  border-radius: 10px;
+  border: solid 2px #1b5e20;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 

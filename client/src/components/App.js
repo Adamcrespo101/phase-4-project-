@@ -10,6 +10,7 @@ import SignUp from './SignUp';
 import TeacherGradesContainer from './TeacherGradesContainer';
 import StudentGradesContainer from './StudentGradesContainer';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom'
 
 function App() {
 
@@ -19,26 +20,28 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [teachers, setTeachers]= useState({})
-  // useEffect(() => {
-  //   fetch("/me").then((res) => {
-  //     if (res.ok) {
-  //       res.json().then((user) => {
-  //         setCurrentUser(user);
-  //         setIsAuthenticated(true);
-  //       });
-  //     }
-  //   });
-  // }, []);
-
-  // if (!isAuthenticated) {
-  //   return <div></div>;
-  // }
-
+  let params = useParams()
   useEffect(() => {
-    fetch('/teachers/1')
-    .then(res => res.json())
-    .then(data => setTeachers(data))
-  },[])
+    fetch(`/auth`).then((res) => {
+      if (res.ok) {
+        res.json().then((user) => {
+          console.log(user)
+          setCurrentUser(user);
+          setIsAuthenticated(true);
+        });
+      }
+    });
+  }, []);
+
+  if (!isAuthenticated) {
+    return <div></div>;
+  }
+
+  // useEffect(() => {
+  //   fetch('/teachers/1')
+  //   .then(res => res.json())
+  //   .then(data => setTeachers(data))
+  // },[])
 
 
 
@@ -57,7 +60,7 @@ console.log(teachers)
         <Route path="/" element={<Home />}></Route>
         <Route path="/signup" element={<SignUp radioChange={radioChange} setRadioChange={setRadioChange}/>}></Route>
         <Route path="/calendar" element={<Calendar />}></Route>
-        <Route path="/profile" element={<Teacher teachers={teachers} />}></Route>
+        {/*<Route path="/profile" element={<Teacher teachers={teachers} />}></Route>*/}
         <Route path="/teacher-grades" element={<TeacherGradesContainer/>}></Route>
         <Route path="/student-grades" element={<StudentGradesContainer/>}></Route>
       </Routes>
