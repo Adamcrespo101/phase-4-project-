@@ -9,13 +9,14 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Student from './Student';
 import GradeFilter from './GradeFilter'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useParams } from 'react-router-dom';
 
 
 function Teacher({teachers}){
@@ -26,9 +27,15 @@ function Teacher({teachers}){
 
     const [showForm, setShowForm]= useState(false) //show/hide new student form
 
+    const [students, setStudents]= useState({})
+
     const [open, setOpen] = React.useState(false);
 
-    const handleOpen = () => setOpen(true); //open handleOpen and handleClose- open and close the student detail modal
+    let params = useParams()
+
+   // const handleOpen = () => setOpen(true); //open handleOpen and handleClose- open and close the student detail modal
+
+  
 
     const handleClose = () => setOpen(false);
 
@@ -87,11 +94,20 @@ function Teacher({teachers}){
     
     const selectedStudent = studentsArr?.find((student) => student.id === studentDisplay) //filters the students from the one thats clicked on
 
+    function handleOpen(){
+      fetch(`/students/${selectedStudent?.id}`)
+      .then(res => res.json())
+      .then(data => setStudents(data))
+    setOpen(true)
+  }
+
       function handleClick(){
         setStudentDisplay(selectedStudent)
       }
 
       console.log(selectedStudent)
+      console.log(students)
+    
     return(
         <div className="teacher_profile">
             <h1>My Teacher Profile:</h1>
@@ -148,11 +164,27 @@ function Teacher({teachers}){
         <Fade in={open}>
           <Box sx={style}>
                   <Typography id="transition-modal-title" variant="h6" component="h2">
-                    Text in a modal
+                    Report Card for: {selectedStudent?.name}
                   </Typography>
+                  <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+                    _________________________________________
+                  </Typography>
+                  {students?.grades?.map((grade) => {
+    return       (<>
                     <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-                      Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                    Course: {grade?.course_name}
+                 </Typography>
+                    <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+                     Final Grade: {grade?.result}
                   </Typography>
+                  <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+                    Feedback: {grade?.feedback}
+                  </Typography>
+                  <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+                    _________________________________________
+                  </Typography>
+                  </>)
+                  })}
                 </Box>
             </Fade>
           </Modal>
@@ -177,7 +209,7 @@ function Teacher({teachers}){
            
             <StyledTableRow>
               <StyledTableCell component="th" scope="row" onClick={(() => setStudentDisplay(student.id))}>
-                {student.name}
+              <div onClick={handleOpen}>{student.name}</div>
               </StyledTableCell>
               <StyledTableCell align="right">{student.degree_type}</StyledTableCell>
               <StyledTableCell align="right">{student.username}</StyledTableCell>

@@ -1,0 +1,13 @@
+-model must have a password_digest attribute (our teacher model has this attribute)
+
+-give your models the has_secure_password
+
+-create sessions controller
+
+-add post "/login" and delete "logout" routes to config/routes.rb
+
+- in sessions controller build out the create and delete actions 
+
+-go to the user(our teachers) model and build out show action that grabs the session[:user_id]
+
+-add get '/me' or get '/auth to "users#show"
