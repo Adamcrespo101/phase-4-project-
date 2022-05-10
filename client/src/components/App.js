@@ -25,7 +25,7 @@ function App() {
       if (res.ok) {
         res.json()
         .then((user) => {
-          setIsAuthenticated(true);
+          setIsAuthenticated(false);
           setCurrentUser(user);
           
         });
@@ -39,7 +39,7 @@ function App() {
       if (res.ok) {
         res.json()
         .then((user) => {
-          setIsAuthenticated(true);
+          setIsAuthenticated(false);
           setCurrentUser(user);
           
         });
@@ -67,9 +67,9 @@ console.log(isAuthenticated)
       <BrowserRouter>
       <Sidebar isAuthenticated={isAuthenticated} setCurrentUser={setCurrentUser} currentUser={currentUser} setIsAuthenticated={setIsAuthenticated}/>
       <Routes>
-        <Route path="/login" element={<Login setCurrentUser={setCurrentUser} handleRadio={handleRadio} radioChange={radioChange} setIsAuthenticated={setIsAuthenticated}/>}></Route>
-        <Route path="/" element={<Home currentUser={currentUser} />}></Route>
-        <Route path="/signup" element={<SignUp setCurrentUser={setCurrentUser} setIsAuthenticated={setIsAuthenticated}/>}></Route>
+        <Route path="/login" index element={<Login setCurrentUser={setCurrentUser} handleRadio={handleRadio} radioChange={radioChange} setIsAuthenticated={setIsAuthenticated}/>}></Route>
+        <Route path="/" element={<Home currentUser={currentUser} radioChange={radioChange}/>}></Route>
+        <Route path="/signup" element={<SignUp setCurrentUser={setCurrentUser} setIsAuthenticated={setIsAuthenticated} radioChange={radioChange}/>}></Route>
         <Route path="/calendar" element={<Calendar />}></Route>
         <Route path="/profile" element={<Teacher currentUser={currentUser} />}></Route>
         <Route path="/teacher-grades" element={<TeacherGradesContainer/>}></Route>
