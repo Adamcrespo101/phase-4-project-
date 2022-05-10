@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 
-function Sidebar({setCurrentUser, currentUser, setIsAuthenticated}) {
+function Sidebar({setCurrentUser, currentUser, setIsAuthenticated, isAuthenticated}) {
     
     const [open, setOpen] = useState(true)
     const navigate = useNavigate()
@@ -30,16 +30,16 @@ return (
             <div class="bar3"></div>
         </div>
         </button>
-        <button className={currentUser === null ? "logout-btn x-button logged_out" : "logout-btn x-button"} onClick={handleLogout}>Log Out</button>
+        <button className={!isAuthenticated ? "logout-btn x-button logged_out" : "logout-btn x-button"} onClick={handleLogout}>Log Out</button>
         </header>
         <nav className={open ? "nav" : "nav nav--open"}>
             <div className="nav__links">
                 <p onClick={handleBar} className="x-button">[x]</p>
-                {currentUser === null ?  <a href="/login" className="nav__link">Login</a> : null}
-                <a href="/" className="nav__link"><i>🏠</i> Home</a>
-                <a href="/signup" className="nav__link"><i>📝</i>Sign Up</a>
-                <a href="/profile" className="nav__link"><i>👤</i> Profile</a>
-                <a href="/calendar" className="nav__link"><i>📅</i> Calendar</a>
+                {!isAuthenticated ?  <a href="/login" className="nav__link">Login</a> : null}
+                {isAuthenticated ? <a href="/" className="nav__link"><i>🏠</i> Home</a> : null}
+                {!isAuthenticated ? <a href="/signup" className="nav__link"><i>📝</i>Sign Up</a> : null}
+                {isAuthenticated ? <a href="/profile" className="nav__link"><i>👤</i> Profile</a> : null}
+                {isAuthenticated ? <a href="/calendar" className="nav__link"><i>📅</i> Calendar</a> : null}
             </div>
             <div className="nav__overlay"></div>
         </nav>

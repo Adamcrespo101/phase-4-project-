@@ -318,3 +318,19 @@ h3 {
 .logged_out{
   display: none;
 }
+
+.home_img {
+  height: 660px;
+  width: 100%;
+}
+
+.head-text {
+  position: relative;
+}
+.text-on-image {
+  position: absolute;
+  color: white;
+  right: 50%;
+  left: 10%;
+  bottom: 60%;
+}

@@ -25,7 +25,7 @@ function App() {
       if (res.ok) {
         res.json()
         .then((user) => {
-          setIsAuthenticated(true);
+          setIsAuthenticated(false);
           setCurrentUser(user);
           
         });
@@ -39,7 +39,7 @@ function App() {
       if (res.ok) {
         res.json()
         .then((user) => {
-          setIsAuthenticated(true);
+          setIsAuthenticated(false);
           setCurrentUser(user);
           
         });

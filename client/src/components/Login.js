@@ -83,22 +83,7 @@ function Login ({handleRadio, setCurrentUser, radioChange, setIsAuthenticated}) 
                     </div>
                 </fieldset>
                 <button type="submit">Submit</button>
-                <a href="/signup" id="signup_link" onClick={handleOpen} >Need an Account? Click here to signup.</a>
-                <div id="myModal" class="modal" style={open ? {display: "block"} : {display: "none"}}>
-                <div class="modal-content">
-                    <span class="close" onClick={handleOpen}>[x]</span>
-                        <h3 className="modal-title">Create a new user:</h3>
-                        <form className="new-user-form">
-                        <label for="username">Username:       </label>
-                        <input type="text" name="username" placeholder="Student ID or Teacher username" onChange={handleSignUp} value={formData.username}/>
-                        <br/>
-                        <label for="password">Password :             </label>
-                        <input type="password" name="password" placeholder="Enter a password" onChange={handleSignUp} value={formData.password}/>
-                        <p>Email:<input type="text" placeholder="name@example.com..." name="email" onChange={handleSignUp} value={formData.email}/></p>
-                        <button type="submit" className="new-user-btn">submit</button>
-                        </form>
-                    </div>
-                </div>
+                <a href="/signup" id="signup_link">Need an Account? Click here to signup.</a>
                 </div>
                 </form>
             </div>
