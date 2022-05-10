@@ -99,7 +99,18 @@ function Teacher({currentUser}){
     setOpen(true)
   }
 
-     
+  const [formData, setFormData] = useState({
+    name: '',
+    date_of_birth: '',
+    degree_type: '',
+    expected_graduation: ''
+})
+
+function handleNewStudent(e){
+  setFormData({...formData, [e.target.name]: e.target.value})
+}
+
+console.log(formData.course_name)
      
     return(
         <div className="teacher_profile">
@@ -116,22 +127,22 @@ function Teacher({currentUser}){
               <form>
                   <div className='new-student'>
                     <label for="name"> Name:
-                      <input type="text" name="name" placeholder='Student name...'/>
+                      <input type="text" name="name" placeholder='Student name...'  onChange={handleNewStudent} value={formData.name}/>
                     </label>
                     <br></br>
                     <label for="name"> Student ID:
-                      <input type="text" name="name" placeholder='Username or ID #...'/>
+                      <input type="text" name="username" placeholder='Username or ID #...'  onChange={handleNewStudent} value={formData.username}/>
                     </label>
                     <br></br>
                     <label for="name"> DOB:
-                      <input type="text" name="name" placeholder='Date of birth...'/>
+                      <input type="text" name="date_of_birth" placeholder='YYYY/MM/DD...'  onChange={handleNewStudent} value={formData.date_of_birth}/>
                     </label>
                     <br></br>
                     <label for="name"> Expected graduation:
-                      <input type="text" name="name" placeholder='expected graduation...'/>
+                      <input type="text" name="expected_graduation" placeholder='YYYY/MM/DD...'  onChange={handleNewStudent} value={formData.expected_graduation}/>
                     </label>
                     <br></br>
-                    <select className='cat-select' name="course_name" id="new-select">
+                    <select className='cat-select' name="course_name" id="new-select" onChange={handleNewStudent} value={formData.course_name}>
                     <option>All</option>
                 {filteredCourses?.map((course) => (
                   <option key={course}>{course}</option>
