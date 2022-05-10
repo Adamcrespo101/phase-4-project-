@@ -5,6 +5,7 @@ import Home from './Home';
 import Login from './Login';
 import CalendarComponent from './CalendarComponent';
 import Teacher from './Teacher'
+import Student from './Student'
 import SignUp from './SignUp';
 import TeacherGradesContainer from './TeacherGradesContainer';
 import StudentGradesContainer from './StudentGradesContainer';
@@ -25,7 +26,7 @@ function App() {
       if (res.ok) {
         res.json()
         .then((user) => {
-          setIsAuthenticated(false);
+          setIsAuthenticated(true);
           setCurrentUser(user);
           
         });
@@ -39,7 +40,7 @@ function App() {
       if (res.ok) {
         res.json()
         .then((user) => {
-          setIsAuthenticated(false);
+          setIsAuthenticated(true);
           setCurrentUser(user);
           
         });

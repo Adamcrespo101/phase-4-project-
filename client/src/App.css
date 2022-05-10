@@ -135,7 +135,7 @@ body {
 .x-button { 
   cursor: pointer;
   float: right;
-  margin-right: 10px;
+  margin-right: 30px;
   background-color: #1b5e20;
   color: white;
   padding: 5px;
@@ -333,4 +333,34 @@ h3 {
   right: 50%;
   left: 10%;
   bottom: 60%;
+}
+
+.form-on-image{
+  position: absolute;
+  color: white;
+  right: 50%;
+  left: 35%;
+  bottom: 15%;
+}
+
+.signup-inputs {
+  display: inline-grid;
+  width: 200px;
+  padding: 4px 70px 30px 70px;
+  border: solid 2px #1b5e20;
+  border-radius: 50px;
+  box-shadow: 10px 5px 15px black;
+  max-height: 515px;
+  background-color: white;
+  color: black;
+}
+
+#birthday{
+  margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.login_form {
+  display: contents;
+  position: absolute;
 }

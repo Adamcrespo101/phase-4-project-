@@ -68,8 +68,8 @@ function Login ({handleRadio, setCurrentUser, radioChange, setIsAuthenticated}) 
                     <h2>Enter User login information or click signup to register a new teacher/student:</h2>
                 <div className="form-inputs"> 
                 <h3>Welcome!</h3>   
-                <p>Username/Student ID:<input type="text" placeholder="Username or Student ID" name="username" value={formData.username} onChange={handleChange}/></p>
-                <p>Password:<input type="password" placeholder="Password..." value={formData.password} name="password" onChange={handleChange}/></p>
+                <p>Username/Student ID:<input type="text" required placeholder="Username or Student ID" name="username" value={formData.username} onChange={handleChange}/></p>
+                <p>Password:<input type="password" required placeholder="Password..." value={formData.password} name="password" onChange={handleChange}/></p>
                 
                 <fieldset>
                     <legend>Select a user type:</legend>

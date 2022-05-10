@@ -157,7 +157,7 @@ function Teacher({currentUser}){
         <Fade in={open}>
           <Box sx={style}>
                   <Typography id="transition-modal-title" variant="h6" component="h2">
-                    Report Card for: {selectedStudent?.name}
+                    Transcript for: {selectedStudent?.name}
                   </Typography>
                   <Typography id="transition-modal-description" sx={{ mt: 2 }}>
                     _________________________________________
