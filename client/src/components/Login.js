@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Navigate } from 'react-router-dom'
 
-function Login ({handleRadio, setCurrentUser, isAuthenticated, setIsAuthenticated}) {
+function Login ({handleRadio, setCurrentUser, radioChange, setIsAuthenticated}) {
 
 
     const navigate = useNavigate()
@@ -35,7 +35,8 @@ function Login ({handleRadio, setCurrentUser, isAuthenticated, setIsAuthenticate
       const handleSubmit = (event) => {
         event.preventDefault();
         console.log('hello')
-        fetch("/login", {
+        fetch(radioChange === "Teacher" ?
+         "/login" : "/student/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

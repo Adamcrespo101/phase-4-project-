@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 
-function Sidebar({setCurrentUser, currentUser}) {
+function Sidebar({setCurrentUser, currentUser, setIsAuthenticated}) {
     
     const [open, setOpen] = useState(true)
     const navigate = useNavigate()
@@ -16,6 +16,7 @@ function Sidebar({setCurrentUser, currentUser}) {
                   navigate('/login')
                 }
                 setCurrentUser(null)
+                setIsAuthenticated(false)
             })
       }
 
@@ -34,7 +35,7 @@ return (
         <nav className={open ? "nav" : "nav nav--open"}>
             <div className="nav__links">
                 <p onClick={handleBar} className="x-button">[x]</p>
-                <a href="/login" className="nav__link">Login</a>
+                {currentUser === null ?  <a href="/login" className="nav__link">Login</a> : null}
                 <a href="/" className="nav__link"><i>🏠</i> Home</a>
                 <a href="/signup" className="nav__link"><i>📝</i>Sign Up</a>
                 <a href="/profile" className="nav__link"><i>👤</i> Profile</a>

@@ -7,16 +7,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Student from './Student';
 import GradeFilter from './GradeFilter'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { useParams } from 'react-router-dom';
+
 
 
 function Teacher({currentUser}){
@@ -31,7 +29,7 @@ function Teacher({currentUser}){
 
     const [open, setOpen] = React.useState(false);
 
-    let params = useParams()
+   
 
    // const handleOpen = () => setOpen(true); //open handleOpen and handleClose- open and close the student detail modal
 
@@ -95,16 +93,13 @@ function Teacher({currentUser}){
     const selectedStudent = studentsArr?.find((student) => student.id === studentDisplay) //filters the students from the one thats clicked on
 
     function handleOpen(){
-      fetch(`/students/${selectedStudent?.id}`)
+      fetch(`/find/${selectedStudent?.id}`)
       .then(res => res.json())
       .then(data => setStudents(data))
     setOpen(true)
   }
 
-      function handleClick(){
-        setStudentDisplay(selectedStudent)
-      }
-
+     
      
     return(
         <div className="teacher_profile">

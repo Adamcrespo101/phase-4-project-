@@ -1,6 +1,6 @@
 function Home ({currentUser}) {
     return (
-        <h1>Welcome {currentUser.name}!</h1>
+        <h1>Welcome {currentUser?.name}!</h1>
     )
 }
 

@@ -1,10 +1,9 @@
 import { useState } from "react"
-import { useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-function SignUp ({radioChange, setRadioChange}) {
-    let params = useParams()
+function SignUp ({setCurrentUser, setIsAuthenticated}) {
+    const navigate = useNavigate()
     const [errors, setErrors]= useState([])
-    const [currentUser, setCurrentUser] = useState(null)
     const [formData, setFormData] = useState({
         name: '',
         password: '',
@@ -25,8 +24,7 @@ function SignUp ({radioChange, setRadioChange}) {
     function handleSubmit(e) {
         e.preventDefault();
     
-        const userCreds = { ...formData };
-    //radioChange ? `/students/${params.id}` :  
+        const userCreds = { ...formData }; 
         fetch(`/teachers`, {
           method: "POST",
           headers: {
@@ -36,7 +34,10 @@ function SignUp ({radioChange, setRadioChange}) {
         }).then((res) => {
           if (res.ok) {
             res.json().then((user) => {
+              console.log(user)
+              setIsAuthenticated(true)
               setCurrentUser(user);
+              navigate('/')
             });
           } else {
             res.json().then((errors) => {
@@ -45,8 +46,10 @@ function SignUp ({radioChange, setRadioChange}) {
           }
         });
       }
+
+      
     return(
-        <form className="new-user-form">
+        <form className="signup_form" onSubmit={handleSubmit}>
           <img id="signup-img" src="https://cdn.firespring.com/images/ee612d58-b43d-4530-93a8-9d4ebbd9a6ba.jpg" alt="college lecture hall" />
             <h3 className="modal-title">Create a new user:</h3>
             <div className="form-inputs">
