@@ -26,9 +26,9 @@ function App() {
       if (res.ok) {
         res.json()
         .then((user) => {
-          setIsAuthenticated(true);
+          setIsAuthenticated(false);
           setCurrentUser(user);
-          
+          console.log("teacher authenticated")
         });
       }
     });
@@ -40,9 +40,9 @@ function App() {
       if (res.ok) {
         res.json()
         .then((user) => {
-          setIsAuthenticated(true);
+          setIsAuthenticated(false);
           setCurrentUser(user);
-          
+          console.log("student authenticated")
         });
       }
     });
