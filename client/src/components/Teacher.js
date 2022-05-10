@@ -222,7 +222,7 @@ function Teacher({currentUser}){
     
     : 
     
-    <GradeFilter studentsArr={studentsArr} StyledTableCell={StyledTableCell} StyledTableRow={StyledTableRow} filteredCourses={filteredCourses}/>
+    <GradeFilter studentsArr={studentsArr} currentUser={currentUser} StyledTableCell={StyledTableCell} StyledTableRow={StyledTableRow} filteredCourses={filteredCourses}/>
     
     }
       

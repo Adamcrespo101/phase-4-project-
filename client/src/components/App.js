@@ -62,7 +62,7 @@ console.log(isAuthenticated)
       <Sidebar isAuthenticated={isAuthenticated} setCurrentUser={setCurrentUser} currentUser={currentUser}/>
       <Routes>
         <Route path="/login" element={<Login setCurrentUser={setCurrentUser} handleRadio={handleRadio} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/>}></Route>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home currentUser={currentUser} />}></Route>
         <Route path="/signup" element={<SignUp radioChange={radioChange} setRadioChange={setRadioChange}/>}></Route>
         <Route path="/calendar" element={<Calendar />}></Route>
         <Route path="/profile" element={<Teacher currentUser={currentUser} />}></Route>

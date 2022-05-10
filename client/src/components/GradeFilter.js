@@ -10,13 +10,13 @@ import Paper from '@mui/material/Paper';
 import { useState, useEffect } from 'react';
 import StudentGradesContainer from './StudentGradesContainer';
 
-function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCourses}){
+function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCourses, currentUser}){
     
     const [grades, setGrades]= useState([])
     const [courseName, setCourseName]= useState("All")
 
     useEffect(() => {
-        fetch('/grades/1')
+        fetch(`/grades/${currentUser.id}`)
         .then(res => res.json())
         .then(data => setGrades(data))
     },[])
