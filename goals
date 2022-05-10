@@ -1,5 +1,6 @@
 -  be able to update teacher profiles 
--  add more inputs to signup pages (COMPLETE)
+-  build student profile page
 - add students to teachers roster 
+- add final grades 
 - remove students from the database
 - add dynamic event calendars (students have assignments due, teachers have appointments)
