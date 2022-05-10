@@ -1,11 +1,11 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
 import chalkboard from '../images/chalkboard.jpg'
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 
-function SignUp () {
+function SignUp ({setIsAuthenticated}) {
     const navigate = useNavigate()
     const [errors, setErrors]= useState([])
     const [formData, setFormData] = useState({
@@ -26,6 +26,8 @@ function SignUp () {
       expected_graduation: ''
   })
     const [formState, setFormState]= useState(true)
+
+
 
     function handleSignUp(e){
         setFormData({...formData, [e.target.name]: e.target.value})
@@ -139,7 +141,7 @@ function SignUp () {
                 <input type="text" name="name" required placeholder="Enter first and last name..." onChange={handleStudentChange} value={studentFormData.name}/>
                     <br/>
             <label for="username">Username:       </label>
-                <input type="text" name="username" required placeholder="Student ID or Teacher username" onChange={handleStudentChange} value={studentFormData.username}/>
+                <input type="text" name="username" required placeholder="format: #######-# or enter a specific username" onChange={handleStudentChange} value={studentFormData.username}/>
                     <br/>
                     <label for="password">Password :             </label>
                     <input type="password" name="password" required placeholder="Enter a password" onChange={handleStudentChange} value={studentFormData.password}/>

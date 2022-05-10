@@ -11,7 +11,7 @@ class StudentSessionsController < ApplicationController
     end
 
     def destroy 
-        
+        session.delete :teacher_id
         session.delete :student_id
     end
 

@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { useNavigate, Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Login ({handleRadio, setCurrentUser, radioChange, setIsAuthenticated}) {
 
 
     const navigate = useNavigate()
     const [toggle, setToggle]= useState(false)
-    const [open, setOpen]= useState(false)
-    const [error, setError]= useState([])
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -16,14 +14,6 @@ function Login ({handleRadio, setCurrentUser, radioChange, setIsAuthenticated}) 
 
     function handleToggle(){
         setToggle(prev => !prev)
-    }
-
-    function handleOpen(){
-        setOpen(prev => !prev)
-    }
-
-    function handleSignUp(e){
-        setFormData({...formData, [e.target.name]: e.target.value})
     }
 
     const handleChange = (e) => {
