@@ -1,7 +1,5 @@
 -  be able to update teacher profiles 
 -  build student profile page
-- add students to teachers roster 
-- add final grades 
+- add students to teachers roster (prob not happening) 
 - remove students from the database
 - add dynamic event calendars (students have assignments due, teachers have appointments)
-- instead of new students to rosters add grades that will join student and teacher id 

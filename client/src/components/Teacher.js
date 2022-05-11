@@ -31,15 +31,16 @@ function Teacher({currentUser}){
 
     const [open, setOpen] = React.useState(false);
 
+    const studentsArr = currentUser?.students //students for the logged in teacher
+    
   useEffect(() => {
     fetch('/grades')
     .then(res => res.json())
     .then(data => setGrades(data))
-  }, [])  
+  }, [students])  
 
     const handleClose = () => setOpen(false);
 
-    const studentsArr = currentUser?.students //students for the logged in teacher
 
     const gradesArr = currentUser?.grades //final grades for the logged in teachers students 
 
@@ -127,14 +128,20 @@ function handleSubmit(e){
   fetch('/grades', {
     method: "POST",
     headers: {
-      "Content-type": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(newGrade)
   })
   .then(res => res.json())
   .then(data => setGrades([...grades, data]))
+  setShowForm(false)
+  setFormData({
+    course_name: '',
+    feedback: '',
+    result: ''
+  })
 }
-
+console.log(formData)
     return(
         <div className="teacher_profile">
             <h1>My Teacher Profile:</h1>

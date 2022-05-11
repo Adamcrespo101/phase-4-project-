@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   post '/grades', to: "grades#create"
 
+  delete '/grades/:id', to: "grades#destroy"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

@@ -29,11 +29,12 @@ function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCour
     })
 
     useEffect(() => {
-        fetch(`/grades/${currentUser.id}`)
+        fetch(`/grades/${currentUser?.id}`)
         .then(res => res.json())
         .then(data => setGrades(data))
-    },[])
+    },[studentsArr])
 
+    const selectedGrade = grades?.find((grade) => grade.id === currentGrade)
     const names = studentsArr?.map((student) => {
         return <StyledTableCell component="th" scope="row">{student.name}</StyledTableCell> //maps the students names
     })                                                                                      //dont think im even using it
@@ -48,7 +49,6 @@ function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCour
     setOpen(true)
   }
     
-  const selectedGrade = grades?.find((grade) => grade.id === currentGrade)
   console.log(selectedGrade)
 
   const style = {
@@ -77,10 +77,21 @@ function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCour
       body: JSON.stringify(updateGrade)
     })
     .then(res => res.json())
-    .then(data => setGrades(grades.map(grade => {return grade.id === updateGrade.id ? updateGrade : grade}))
+    .then(data => setGrades(grades.map(grade => {return grade.id === data.id ? data : grade}))
     )
     }
-    console.log(updateGrade)
+    
+
+    function deleteGrade(){
+      fetch(`/grades/${selectedGrade?.id}`, {
+          method: "DELETE"
+        })
+        const deletedGrades = grades.filter(grade => grade.id !== selectedGrade?.id)
+        setGrades(deletedGrades)
+    }
+    console.log(selectedGrade)
+
+   
 
     return(
       <>
@@ -117,7 +128,7 @@ function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCour
               <StyledTableCell align="right">{grade.course_name}</StyledTableCell>
               <StyledTableCell align="right">{grade.result}</StyledTableCell>
               <StyledTableCell align="right" className='table-btn' onClick={() => setCurrentGrade(grade.id)}><div onClick={handleOpen}>✏️</div></StyledTableCell>
-              <StyledTableCell align="right" className='table-btn'>❌</StyledTableCell>
+              <StyledTableCell align="right" className='table-btn' onClick={deleteGrade}><div onClick={(() => setCurrentGrade(grade.id))}>❌</div></StyledTableCell>
               <StyledTableCell align="right">{grade.feedback}</StyledTableCell> 
               </StyledTableRow>
               <Modal
@@ -128,9 +139,7 @@ function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCour
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 500,
-          backgroundColor: "transparent",
-          boxShadow: "none"
+          timeout: 500
         }}
       >
         <Fade in={open}>

@@ -10,7 +10,7 @@ class GradesController < ApplicationController
     end
 
     def create
-        byebug 
+       
         grade = Grade.create!(grade_params)
         render json: grade, status: :ok
     end
@@ -24,6 +24,12 @@ class GradesController < ApplicationController
         grade = Grade.find_by(id: params[:id])
         grade.update(feedback: params[:feedback], result: params[:result])
         render json: grade, status: :accepted
+    end
+
+    def destroy 
+        grade = Grade.find_by(id: params[:id])
+        grade.destroy
+        head :no_content
     end
 
     private 
