@@ -9,6 +9,11 @@ class GradesController < ApplicationController
         render json: grade, include: :student, status: 200
     end
 
+    def report_card 
+        grade = Grade.where(student_id: params[:id])
+        render json: grade, include: :teacher, status: 200
+    end
+
     def create
        
         grade = Grade.create!(grade_params)

@@ -7,8 +7,6 @@ import CalendarComponent from './CalendarComponent';
 import Teacher from './Teacher'
 import Student from './Student'
 import SignUp from './SignUp';
-import TeacherGradesContainer from './TeacherGradesContainer';
-import StudentGradesContainer from './StudentGradesContainer';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -72,9 +70,10 @@ console.log(isAuthenticated)
         <Route path="/home" element={<Home currentUser={currentUser} />}></Route>
         <Route path="/signup" element={<SignUp setCurrentUser={setCurrentUser} setIsAuthenticated={setIsAuthenticated}/>}></Route>
         <Route path="/calendar" element={<CalendarComponent />}></Route>
+       { radioChange === "Teacher" ?
         <Route path="/profile" element={<Teacher currentUser={currentUser} />}></Route>
-        <Route path="/teacher-grades" element={<TeacherGradesContainer/>}></Route>
-        <Route path="/student-grades" element={<StudentGradesContainer/>}></Route>
+        :
+        <Route path="/profile" element={<Student currentUser={currentUser} />}></Route>}
       </Routes>
     </BrowserRouter>
     </div>

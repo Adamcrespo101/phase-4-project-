@@ -392,3 +392,40 @@ div.css-1wnsr1i {
 div.css-sox5kk-MuiBackdrop-root {
  background-color: #0000000a;
 }
+
+.student_info {
+  position: absolute;
+  height: 300px;
+  width: 50em;
+  right: 350px;
+}
+
+#profile-name {
+  text-align: center;
+}
+
+.student_grades {
+  position: absolute;
+  transform: translate(13%, 70%);
+}
+
+#grade_report {
+  margin: 0 auto;
+ 
+}
+
+div.css-1633um2-MuiPaper-root {
+  border: solid 2px #1b5e20;
+}
+
+#profile-img-container {
+  float: left;
+  width: 10%;
+  height: 10%;
+  margin: 5px 10px;
+}
+
+#profile-img {
+  height: 275px;
+  width: 275px;
+}
