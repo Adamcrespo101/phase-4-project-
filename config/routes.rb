@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   get '/find/:id', to: "students#find"
 
+  post '/grades', to: "grades#create"
+
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

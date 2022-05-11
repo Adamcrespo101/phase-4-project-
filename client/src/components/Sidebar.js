@@ -13,7 +13,7 @@ function Sidebar({setCurrentUser, currentUser, setIsAuthenticated, isAuthenticat
         fetch('/logout', {method: "DELETE"})
         .then(res => {
               if (res.ok) {
-                  navigate('/login')
+                  navigate('/')
                 }
                 setCurrentUser(null)
                 setIsAuthenticated(false)
@@ -35,8 +35,8 @@ return (
         <nav className={open ? "nav" : "nav nav--open"}>
             <div className="nav__links">
                 <p onClick={handleBar} className="x-button">[x]</p>
-                {currentUser === null ?  <a href="/login" className="nav__link">Login</a> : null}
-                {currentUser === null ? null : <a href="/" className="nav__link"><i>🏠</i> Home</a> }
+                {currentUser === null ?  <a href="/" className="nav__link">Login</a> : null}
+                {currentUser === null ? null : <a href="/home" className="nav__link"><i>🏠</i> Home</a> }
                 {currentUser === null ? <a href="/signup" className="nav__link"><i>📝</i>Sign Up</a> : null}
                 {currentUser === null ? null : <a href="/profile" className="nav__link"><i>👤</i> Profile</a>}
                 {currentUser === null ? null : <a href="/calendar" className="nav__link"><i>📅</i> Calendar</a>}

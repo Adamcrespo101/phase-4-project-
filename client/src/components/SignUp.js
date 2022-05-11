@@ -79,7 +79,7 @@ function SignUp ({setIsAuthenticated}) {
             res.json().then((user) => {
               console.log(user)
              // setCurrentUser(user);
-              navigate('/login')
+              navigate('/')
             });
           } else {
             res.json().then((errors) => {
@@ -141,7 +141,7 @@ function SignUp ({setIsAuthenticated}) {
                 <input type="text" name="name" required placeholder="Enter first and last name..." onChange={handleStudentChange} value={studentFormData.name}/>
                     <br/>
             <label for="username">Username:       </label>
-                <input type="text" name="username" required placeholder="format: #######-# or enter a specific username" onChange={handleStudentChange} value={studentFormData.username}/>
+                <input type="text" name="username" required placeholder="Student ID # or enter a specific username" onChange={handleStudentChange} value={studentFormData.username}/>
                     <br/>
                     <label for="password">Password :             </label>
                     <input type="password" name="password" required placeholder="Enter a password" onChange={handleStudentChange} value={studentFormData.password}/>

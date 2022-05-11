@@ -4,3 +4,4 @@
 - add final grades 
 - remove students from the database
 - add dynamic event calendars (students have assignments due, teachers have appointments)
+- instead of new students to rosters add grades that will join student and teacher id 

@@ -37,7 +37,7 @@ function Login ({handleRadio, setCurrentUser, radioChange, setIsAuthenticated}) 
             res.json().then((user) => {
               setCurrentUser(user);
               setIsAuthenticated(true)
-              navigate('/')
+              navigate('/home')
             });
           } else {
             res.json().then((errors) => {

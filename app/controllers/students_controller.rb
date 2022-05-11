@@ -14,6 +14,12 @@ class StudentsController < ApplicationController
         end
     end
 
+    def add 
+        student = Student.create!(new_student_params)
+        grade = Grade.create!(grade_params)
+        render json: student, status: :ok
+    end
+
     def show 
         if params[:id] #if we have /:id we are getting any user 
             student = Student.find(params[:id])
@@ -49,6 +55,14 @@ class StudentsController < ApplicationController
 
     def student_params 
         params.permit(:username, :password)
+    end
+
+    def new_student_params 
+        params.permit(:name, :username, :date_of_birth, :expected_graduation, :course_name, :teacher_id)
+    end
+
+    def grade_params
+        params.permit(:feedback, :result, :course_name, :student_id, :teacher_id)
     end
 
 end

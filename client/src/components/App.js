@@ -68,8 +68,8 @@ console.log(isAuthenticated)
       <BrowserRouter>
       <Sidebar isAuthenticated={isAuthenticated} setCurrentUser={setCurrentUser} currentUser={currentUser} setIsAuthenticated={setIsAuthenticated}/>
       <Routes>
-        <Route path="/login" element={<Login setCurrentUser={setCurrentUser} handleRadio={handleRadio} radioChange={radioChange} setIsAuthenticated={setIsAuthenticated}/>}></Route>
-        <Route path="/" element={<Home currentUser={currentUser} />}></Route>
+        <Route path="/" index element={<Login setCurrentUser={setCurrentUser} handleRadio={handleRadio} radioChange={radioChange} setIsAuthenticated={setIsAuthenticated}/>}></Route>
+        <Route path="/home" element={<Home currentUser={currentUser} />}></Route>
         <Route path="/signup" element={<SignUp setCurrentUser={setCurrentUser} setIsAuthenticated={setIsAuthenticated}/>}></Route>
         <Route path="/calendar" element={<CalendarComponent />}></Route>
         <Route path="/profile" element={<Teacher currentUser={currentUser} />}></Route>

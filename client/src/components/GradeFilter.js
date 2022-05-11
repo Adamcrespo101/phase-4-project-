@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import { useState, useEffect } from 'react';
 
 
-function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCourses, currentUser}){
+function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCourses, currentUser, setStudentDisplay}){
     
     const [grades, setGrades]= useState([])
     const [courseName, setCourseName]= useState("All")
@@ -27,8 +27,7 @@ function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCour
 
     
      let courseFilter = grades?.filter((grade) => grade.course_name.includes(courseName)) //filters based on the selected course 
-    console.log(courseFilter)
-    console.log(courseName)
+    
     return(
       <>
       <label for="sort-by-course" id="cat-label">
@@ -60,7 +59,7 @@ function GradeFilter({studentsArr, StyledTableCell, StyledTableRow, filteredCour
                   grades?.map((grade) => (
            <>
             <StyledTableRow>
-            <StyledTableCell component="th" scope="row">{grade.student.name}</StyledTableCell>
+            <StyledTableCell component="th" scope="row" onClick={() => setStudentDisplay(grade.student.id)}>{grade.student.name}</StyledTableCell>
               <StyledTableCell align="right">{grade.course_name}</StyledTableCell>
               <StyledTableCell align="right">{grade.result}</StyledTableCell>
               <StyledTableCell align="right" className='table-btn'>✏️</StyledTableCell>

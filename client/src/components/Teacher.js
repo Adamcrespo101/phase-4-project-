@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import GradeFilter from './GradeFilter'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -27,13 +27,15 @@ function Teacher({currentUser}){
 
     const [students, setStudents]= useState({})
 
+    const [grades, setGrades]= useState([])
+
     const [open, setOpen] = React.useState(false);
 
-   
-
-   // const handleOpen = () => setOpen(true); //open handleOpen and handleClose- open and close the student detail modal
-
-  
+  useEffect(() => {
+    fetch('/grades')
+    .then(res => res.json())
+    .then(data => setGrades(data))
+  }, [currentUser])  
 
     const handleClose = () => setOpen(false);
 
@@ -76,7 +78,8 @@ function Teacher({currentUser}){
         boxShadow: 24,
         p: 4,
       };
-   
+      
+      console.log(currentUser)
       const courseNames = gradesArr?.map((grade) => grade.course_name)
 
       const filteredCourses = courseNames?.filter(onlyUniqueCourses)
@@ -100,18 +103,38 @@ function Teacher({currentUser}){
   }
 
   const [formData, setFormData] = useState({
-    name: '',
-    date_of_birth: '',
-    degree_type: '',
-    expected_graduation: ''
+    course_name: '',
+    feedback: '',
+    result: '',
+    student_id: selectedStudent?.id,
+    teacher_id: currentUser?.id
 })
 
 function handleNewStudent(e){
   setFormData({...formData, [e.target.name]: e.target.value})
 }
 
-console.log(formData.course_name)
-     
+function handleSubmit(e){
+  const newGrade = {
+    course_name: formData.course_name,
+    result: formData.result,
+    feedback: formData.feedback,
+    teacher_id: currentUser?.id,
+    student_id: selectedStudent?.id
+  }
+  console.log(newGrade)
+  e.preventDefault()
+  fetch('/grades', {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(newGrade)
+  })
+  .then(res => res.json())
+  .then(data => setGrades([...grades, data]))
+}
+
     return(
         <div className="teacher_profile">
             <h1>My Teacher Profile:</h1>
@@ -123,32 +146,25 @@ console.log(formData.course_name)
             <h3>Professor of: {currentUser?.subject}</h3>
             <br></br>
             <div className={showForm ? 'info-container' : 'hidden'}>
-              <h2>Add new student to your roster:</h2>
-              <form>
+              <h2>Upload new grade for {selectedStudent === undefined ? "student" : selectedStudent?.name}:</h2>
+              <form onSubmit={handleSubmit}>
                   <div className='new-student'>
-                    <label for="name"> Name:
-                      <input type="text" name="name" placeholder='Student name...'  onChange={handleNewStudent} value={formData.name}/>
-                    </label>
-                    <br></br>
-                    <label for="name"> Student ID:
-                      <input type="text" name="username" placeholder='Username or ID #...'  onChange={handleNewStudent} value={formData.username}/>
-                    </label>
-                    <br></br>
-                    <label for="name"> DOB:
-                      <input type="text" name="date_of_birth" placeholder='YYYY/MM/DD...'  onChange={handleNewStudent} value={formData.date_of_birth}/>
-                    </label>
-                    <br></br>
-                    <label for="name"> Expected graduation:
-                      <input type="text" name="expected_graduation" placeholder='YYYY/MM/DD...'  onChange={handleNewStudent} value={formData.expected_graduation}/>
-                    </label>
-                    <br></br>
                     <select className='cat-select' name="course_name" id="new-select" onChange={handleNewStudent} value={formData.course_name}>
                     <option>All</option>
                 {filteredCourses?.map((course) => (
                   <option key={course}>{course}</option>
                   ))}
             </select>
-                  <h3 className="x-button"> Add Student [+]</h3>
+                    <label for="result"> Final Grade:
+                      <input type="text" name="result" placeholder='final grade...'  onChange={handleNewStudent} value={formData.result}/>
+                    </label>
+                    <br></br>
+                    <label for="feedback"> Feedback:
+                      <input type="text" name="feedback" placeholder='course feedback...'  onChange={handleNewStudent} value={formData.feedback}/>
+                    </label>
+                    <br></br>
+                    
+                  <button type='submit' className="x-button"> Upload grade [+]</button>
                   </div>
               </form>
             </div>
@@ -194,8 +210,8 @@ console.log(formData.course_name)
           </Modal>
         </div>
             <h2>{displayState ? "Students:" : "Grades:"}</h2> 
-            <p className="show-button" onClick={changeDisplay}>{displayState? "Show Grades and Assignments" : "Return"}</p>
-            <p className='show-button' onClick={handleShow}>{!showForm ? "Add Students to the roster" : "Close form"}</p>
+            <p className="show-button" onClick={changeDisplay}>{displayState? "Show Final Grades" : "Return to roster"}</p>
+            <p className='show-button' onClick={handleShow}>{!showForm ? "Upload new grades" : "Close form"}</p>
             {displayState ? <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
@@ -228,7 +244,7 @@ console.log(formData.course_name)
     
     : 
     
-    <GradeFilter studentsArr={studentsArr} currentUser={currentUser} StyledTableCell={StyledTableCell} StyledTableRow={StyledTableRow} filteredCourses={filteredCourses}/>
+    <GradeFilter studentsArr={studentsArr} currentUser={currentUser} StyledTableCell={StyledTableCell} StyledTableRow={StyledTableRow} filteredCourses={filteredCourses} setStudentDisplay={setStudentDisplay}/>
     
     }
       
