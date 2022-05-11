@@ -15,6 +15,17 @@ class GradesController < ApplicationController
         render json: grade, status: :ok
     end
 
+    def find 
+        grade = Grade.find_by(id: params[:id])
+        render json: grade
+    end
+
+    def update 
+        grade = Grade.find_by(id: params[:id])
+        grade.update(feedback: params[:feedback], result: params[:result])
+        render json: grade, status: :accepted
+    end
+
     private 
 
     def grade_params

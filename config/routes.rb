@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   get '/find/:id', to: "students#find"
 
+  get '/find/:id', to: "grades#find"
+
   post '/grades', to: "grades#create"
 
 

@@ -232,16 +232,24 @@ h3 {
   cursor: pointer;
 }
 
+textarea {
+  max-width: 490px;
+  max-height: 80px;
+  min-height: 80px;
+  min-width: 490px;
+}
+
 .info-container {
   float: right;
-  height: 380px;
-  width: 500px;
-  position: absolute;
-  right: 400px;
-  top: 160px;
-  border: solid 2px #1b5e20;
-  padding: 10px;
-  border-radius: 50px;
+    height: 250px;
+    width: 500px;
+    position: absolute;
+    right: 400px;
+    top: 160px;
+    border: solid 2px #1b5e20;
+    padding: 10px;
+    border-radius: 50px;
+    display: grid;
   
 }
 
@@ -363,4 +371,24 @@ h3 {
 .login_form {
   display: contents;
   position: absolute;
+}
+
+#course_label {
+  position: absolute;
+  right: 170px;
+  top: 75px;
+}
+
+#grade_label {
+  position: absolute;
+    top: 91px;
+}
+
+div.css-1wnsr1i {
+  width: 500px;
+  box-shadow: none;
+}
+
+div.css-sox5kk-MuiBackdrop-root {
+ background-color: #0000000a;
 }

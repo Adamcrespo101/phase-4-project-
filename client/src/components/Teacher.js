@@ -35,7 +35,7 @@ function Teacher({currentUser}){
     fetch('/grades')
     .then(res => res.json())
     .then(data => setGrades(data))
-  }, [currentUser])  
+  }, [])  
 
     const handleClose = () => setOpen(false);
 
@@ -149,18 +149,21 @@ function handleSubmit(e){
               <h2>Upload new grade for {selectedStudent === undefined ? "student" : selectedStudent?.name}:</h2>
               <form onSubmit={handleSubmit}>
                   <div className='new-student'>
+                    <label for="course_name" id="course_label"> Course: </label>
                     <select className='cat-select' name="course_name" id="new-select" onChange={handleNewStudent} value={formData.course_name}>
                     <option>All</option>
                 {filteredCourses?.map((course) => (
                   <option key={course}>{course}</option>
                   ))}
             </select>
-                    <label for="result"> Final Grade:
+            
+            <br></br>
+                    <label for="result" id="grade_label"> Final Grade:
                       <input type="text" name="result" placeholder='final grade...'  onChange={handleNewStudent} value={formData.result}/>
                     </label>
                     <br></br>
                     <label for="feedback"> Feedback:
-                      <input type="text" name="feedback" placeholder='course feedback...'  onChange={handleNewStudent} value={formData.feedback}/>
+                      <textarea type="text" name="feedback" placeholder='course feedback...'  onChange={handleNewStudent} value={formData.feedback}/>
                     </label>
                     <br></br>
                     
@@ -244,7 +247,7 @@ function handleSubmit(e){
     
     : 
     
-    <GradeFilter studentsArr={studentsArr} currentUser={currentUser} StyledTableCell={StyledTableCell} StyledTableRow={StyledTableRow} filteredCourses={filteredCourses} setStudentDisplay={setStudentDisplay}/>
+    <GradeFilter studentsArr={studentsArr} currentUser={currentUser} StyledTableCell={StyledTableCell} StyledTableRow={StyledTableRow} filteredCourses={filteredCourses} setStudentDisplay={setStudentDisplay} />
     
     }
       
