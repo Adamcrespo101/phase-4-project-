@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_06_154441) do
+ActiveRecord::Schema.define(version: 2022_05_12_171343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assignments", force: :cascade do |t|
+    t.string "name"
+    t.datetime "due_date"
+    t.string "description"
+    t.integer "current_course_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "current_courses", force: :cascade do |t|
+    t.string "course_name"
+    t.integer "student_id"
+    t.integer "teacher_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "grades", force: :cascade do |t|
     t.integer "result"
@@ -35,6 +52,7 @@ ActiveRecord::Schema.define(version: 2022_05_06_154441) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email"
+    t.integer "current_course_id"
   end
 
   create_table "teachers", force: :cascade do |t|

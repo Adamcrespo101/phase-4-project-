@@ -74,5 +74,49 @@ Grade.create(teacher_id: rand(1..3), student_id: rand(1..30), result: rand(65..1
 Grade.create(teacher_id: rand(1..3), student_id: rand(1..30), result: rand(65..100), course_name: Faker::Educator.course_name, feedback: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
 Grade.create(teacher_id: rand(1..3), student_id: rand(1..30), result: rand(65..100), course_name: Faker::Educator.course_name, feedback: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
 Grade.create(teacher_id: rand(1..3), student_id: rand(1..30), result: rand(65..100), course_name: Faker::Educator.course_name, feedback: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
-    
-    
+   #10 
+CurrentCourse.create(course_name: "Underwater Basket Weaving 101", teacher_id: 1, student_id: 1)
+CurrentCourse.create(course_name: "Aging, Things, and Espionage in the World 102", teacher_id: 1, student_id: 2)
+CurrentCourse.create(course_name: "Landscapes, Pilgrimage, and Beowulf 302", teacher_id: 1, student_id: 3)
+
+CurrentCourse.create(course_name: "Pirates and Decision-Making in Molecular Biology", teacher_id: 2, student_id: 1)
+CurrentCourse.create(course_name: "Issues and Choreography in Applied Mathematics", teacher_id: 2, student_id: 2)
+CurrentCourse.create(course_name: "Death, Television and Conquest", teacher_id: 2, student_id: 3)
+
+CurrentCourse.create(course_name: "Machines, Gravity, and Mobility in Modern Poetry and Fiction", teacher_id: 3, student_id: 1)
+CurrentCourse.create(course_name: "Construction and Drugs in Climate and Energy", teacher_id: 3, student_id: 2)
+CurrentCourse.create(course_name: "Hydrology and Entrepreneurship in American History", teacher_id: 3, student_id: 3)
+#Teacher 1s courses:
+Assignment.create(name: "Essay", due_date: DateTime.new(2022,5,10), description: "blah blah blah just write some stuff", current_course_id: 1)
+Assignment.create(name: "Worksheet", due_date: DateTime.new(2022,5,11), description: "blah blah blah just write some stuff", current_course_id: 1)
+Assignment.create(name: "More homework", due_date: DateTime.new(2022,5,12), description: "blah blah blah just write some stuff", current_course_id: 1)
+Assignment.create(name: "Essay", due_date: DateTime.new(2022,5,10), description: "blah blah blah just write some stuff", current_course_id: 2)
+Assignment.create(name: "Worksheet", due_date: DateTime.new(2022,5,11), description: "blah blah blah just write some stuff", current_course_id: 2)
+Assignment.create(name: "More homework", due_date: DateTime.new(2022,5,12), description: "blah blah blah just write some stuff", current_course_id: 2)
+Assignment.create(name: "Essay", due_date: DateTime.new(2022,5,10), description: "blah blah blah just write some stuff", current_course_id: 3)
+Assignment.create(name: "Worksheet", due_date: DateTime.new(2022,5,11), description: "blah blah blah just write some stuff", current_course_id: 3)
+Assignment.create(name: "More homework", due_date: DateTime.new(2022,5,12), description: "blah blah blah just write some stuff", current_course_id: 3)
+
+#Teacher 2s courses:
+Assignment.create(name: "Essay", due_date: DateTime.new(2022,5,10), description: "blah blah blah just write some stuff", current_course_id: 4)
+Assignment.create(name: "Worksheet", due_date: DateTime.new(2022,5,11), description: "blah blah blah just write some stuff", current_course_id: 4)
+Assignment.create(name: "More homework", due_date: DateTime.new(2022,5,12), description: "blah blah blah just write some stuff", current_course_id: 4)
+Assignment.create(name: "Essay", due_date: DateTime.new(2022,5,10), description: "blah blah blah just write some stuff", current_course_id: 5)
+Assignment.create(name: "Worksheet", due_date: DateTime.new(2022,5,11), description: "blah blah blah just write some stuff", current_course_id: 5)
+Assignment.create(name: "More homework", due_date: DateTime.new(2022,5,12), description: "blah blah blah just write some stuff", current_course_id: 5)
+Assignment.create(name: "Essay", due_date: DateTime.new(2022,5,10), description: "blah blah blah just write some stuff", current_course_id: 6)
+Assignment.create(name: "Worksheet", due_date: DateTime.new(2022,5,11), description: "blah blah blah just write some stuff", current_course_id: 6)
+Assignment.create(name: "More homework", due_date: DateTime.new(2022,5,12), description: "blah blah blah just write some stuff", current_course_id: 6)
+
+#Teacher 3s courses: 
+Assignment.create(name: "Essay", due_date: DateTime.new(2022,5,10), description: "blah blah blah just write some stuff", current_course_id: 7)
+Assignment.create(name: "Worksheet", due_date: DateTime.new(2022,5,11), description: "blah blah blah just write some stuff", current_course_id: 7)
+Assignment.create(name: "More homework", due_date: DateTime.new(2022,5,12), description: "blah blah blah just write some stuff", current_course_id: 7)
+Assignment.create(name: "Essay", due_date: DateTime.new(2022,5,10), description: "blah blah blah just write some stuff", current_course_id: 8)
+Assignment.create(name: "Worksheet", due_date: DateTime.new(2022,5,11), description: "blah blah blah just write some stuff", current_course_id: 8)
+Assignment.create(name: "More homework", due_date: DateTime.new(2022,5,12), description: "blah blah blah just write some stuff", current_course_id: 8)
+Assignment.create(name: "Essay", due_date: DateTime.new(2022,5,10), description: "blah blah blah just write some stuff", current_course_id: 9)
+Assignment.create(name: "Worksheet", due_date: DateTime.new(2022,5,11), description: "blah blah blah just write some stuff", current_course_id: 9)
+Assignment.create(name: "More homework", due_date: DateTime.new(2022,5,12), description: "blah blah blah just write some stuff", current_course_id: 9)
+
+
