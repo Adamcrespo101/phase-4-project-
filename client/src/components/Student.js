@@ -14,7 +14,7 @@ useEffect(() => {
 fetch(`/report_card/${currentUser?.id}`)
 .then(res => res.json())
 .then(data => setFinalGrades(data))
-},[])
+},[currentUser?.id])
 console.log(currentUser)
 console.log(finalGrades)
 

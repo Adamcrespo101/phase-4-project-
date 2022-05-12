@@ -292,7 +292,7 @@ textarea {
   background: transform 0.2s;
 }
 
-.css-15001un-MuiTableCell-root.MuiTableCell-body{
+ .css-15001un-MuiTableCell-root.MuiTableCell-body{
   -webkit-transition: color 1s;
   -moz-transition:    color 1s;
   -ms-transition:     color 1s;
@@ -397,7 +397,7 @@ div.css-sox5kk-MuiBackdrop-root {
   position: absolute;
   height: 300px;
   width: 50em;
-  right: 350px;
+  right: 22em;
 }
 
 #profile-name {
@@ -428,4 +428,21 @@ div.css-1633um2-MuiPaper-root {
 #profile-img {
   height: 275px;
   width: 275px;
+}
+
+.assignment-cards{
+  height: fit-content;
+  width: 20em;
+  border: solid 2px #1b5e20;
+  border-radius: 10px;
+  float: left;
+  padding: 5px;
+  margin: 0.5em;
+  display: flexbox;
+}
+
+.current_courses {
+  float: left;
+  position: absolute;
+  top: 6em;
 }

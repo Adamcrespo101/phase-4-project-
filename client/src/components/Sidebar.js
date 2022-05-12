@@ -39,7 +39,7 @@ return (
                 {currentUser === null ? null : <a href="/home" className="nav__link"><i>🏠</i> Home</a> }
                 {currentUser === null ? <a href="/signup" className="nav__link"><i>📝</i>Sign Up</a> : null}
                 {currentUser === null ? null : <a href="/profile" className="nav__link"><i>👤</i> Profile</a>}
-                {currentUser === null ? null : <a href="/calendar" className="nav__link"><i>📅</i> Calendar</a>}
+                {currentUser === null ? null : <a href="/assignments" className="nav__link"><i>📅</i> Assignments</a>}
             </div>
             <div className="nav__overlay"></div>
         </nav>

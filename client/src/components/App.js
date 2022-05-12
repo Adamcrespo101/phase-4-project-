@@ -3,7 +3,7 @@ import {BrowserRouter, Routes, Route,} from "react-router-dom";
 import Sidebar from './Sidebar';
 import Home from './Home';
 import Login from './Login';
-import CalendarComponent from './CalendarComponent';
+import Assignments from './Assignments'
 import Teacher from './Teacher'
 import Student from './Student'
 import SignUp from './SignUp';
@@ -69,7 +69,7 @@ console.log(isAuthenticated)
         <Route path="/" index element={<Login setCurrentUser={setCurrentUser} handleRadio={handleRadio} radioChange={radioChange} setIsAuthenticated={setIsAuthenticated}/>}></Route>
         <Route path="/home" element={<Home currentUser={currentUser} />}></Route>
         <Route path="/signup" element={<SignUp setCurrentUser={setCurrentUser} setIsAuthenticated={setIsAuthenticated}/>}></Route>
-        <Route path="/calendar" element={<CalendarComponent />}></Route>
+        <Route path="/assignments" element={<Assignments currentUser={currentUser}/>}></Route>
        { radioChange === "Teacher" ?
         <Route path="/profile" element={<Teacher currentUser={currentUser} />}></Route>
         :
