@@ -328,7 +328,7 @@ textarea {
 }
 
 .home_img {
-  height: 660px;
+  height: 55.5em;
   width: 100%;
 }
 
@@ -397,7 +397,7 @@ div.css-sox5kk-MuiBackdrop-root {
   position: absolute;
   height: 300px;
   width: 50em;
-  right: 22em;
+  right: 41%;
 }
 
 #profile-name {
@@ -407,10 +407,14 @@ div.css-sox5kk-MuiBackdrop-root {
 .student_grades {
   position: absolute;
   transform: translate(13%, 70%);
+  min-width: 20%;
 }
 
 #grade_report {
   margin: 0 auto;
+  position: absolute;
+  right: 10%;
+  bottom: 5%;
  
 }
 
@@ -430,19 +434,42 @@ div.css-1633um2-MuiPaper-root {
   width: 275px;
 }
 
-.assignment-cards{
-  height: fit-content;
-  width: 20em;
-  border: solid 2px #1b5e20;
-  border-radius: 10px;
-  float: left;
-  padding: 5px;
-  margin: 0.5em;
-  display: flexbox;
-}
+
 
 .current_courses {
   float: left;
   position: absolute;
   top: 6em;
+}
+
+.css-mhc70k-MuiGrid-root {
+  left: 120%;
+  bottom: 0%;
+  transform: translate(-60%, 110%);
+  position: relative;
+}
+
+
+
+
+.css-mhc70k-MuiGrid-root>.MuiGrid-item {
+  padding-left: 16px;
+  position: absolute;
+  display: contents;
+}
+
+
+
+#table {
+  
+  margin: 5px 5px 5px 5px;
+}
+
+.assignment-cards {
+  border: solid 3px #1b5e20;
+  border-radius: 5px;
+  width: fit-content;
+  margin: 20px;
+  padding: 10px;
+  float: left;
 }

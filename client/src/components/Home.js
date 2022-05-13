@@ -18,9 +18,9 @@ function Home ({currentUser, radioChange}) {
              </>
              :
              <>
-             <h3>Head to your profile to edit your personal information, view your grades.</h3>
+             <h3>Head to your profile to view your personal information, view your final grades.</h3>
              <br></br>
-             <h3>Or you can head over to your event calendar to stay up to date on school events and your upcoming assignments due.</h3>
+             <h3>Or you can head over to your event calendar to stay up to date on your upcoming assignments due.</h3>
              </>}
           </div>
       </>

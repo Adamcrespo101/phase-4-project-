@@ -45,17 +45,25 @@ randomDate(new Date(2022, 5, 1), new Date())
             <h4>Course: {course.course_name}</h4>
             <p className='upcoming'>Upcoming assignments due:</p>
             <p>_______________________________</p>
+            <table id="table">
+            <tr>
+                  <td><strong>Assignment</strong></td>
+                  <td><strong>Due Date</strong></td>
+                  <td><strong>Description</strong></td>
+                </tr>
             {course.assignments.map((assignment) => {
               return(
-                <div className='assignment-content'>
-                <h5>Assignment: {assignment.name}</h5>
-                <h5 key={assignment.id}>Due: {randomDate(new Date(2022, 5, 1), new Date())}</h5>
-                <p><h5>Description:</h5>{assignment.description}</p>
-                <p>_______________________________</p>
-                </div>
-
+                <>
+                
+                <tr  className='assignment-content' >
+                  <td className='assignment-content'>{assignment.name}</td>
+                  <td className='assignment-content' key={assignment.id}>{randomDate(new Date(2022, 5, 1), new Date())}</td>
+                  <td className='assignment-content'>{assignment.description}</td>
+                </tr>
+                </>
               )
             })}
+            </table>
           </div>
         )})}
       </div>
